@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Premier League Match Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f2f2f2;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        label, select, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #0052cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Premier League Match Prediction</h2>
+
+<form method="POST">
+  <label>Home Team:</label>
+  <select name="home" required>
+    {% for team in teams %}
+      <option value="{{ team }}">{{ team }}</option>
+    {% endfor %}
+  </select>
+
+  <label>Away Team:</label>
+  <select name="away" required>
+    {% for team in teams %}
+      <option value="{{ team }}">{{ team }}</option>
+    {% endfor %}
+  </select>
+
+  <label>Date:</label>
+  <input type="date" name="date" required>
+
+  <label>Week (Round):</label>
+  <input type="number" name="wk" min="1" max="38" required>
+
+  <button type="submit">Predict</button>
+</form>
+
+
+{% if prediction %}
+  {% if prediction is string %}
+    <h3>{{ prediction }}</h3>
+  {% else %}
+    <h3>Match Outcome Probabilities:</h3>
+    <ul>
+      {% for label, prob in prediction.items() %}
+        <li><strong>{{ label }}</strong>: {{ prob }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endif %}
+
+
+</body>
+</html>
