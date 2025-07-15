@@ -1,6 +1,6 @@
 # ⚽ Premier League Match Outcome Predictor
 
-This project is a web app that predicts the outcome of any English Premier League match using historical data and a trained machine learning model. The app returns **probabilities** for:
+This project is a web app that predicts the outcome of any English Premier League match using historical match data from **1992 to 2023** and a trained machine learning model. The app returns **probabilities** for:
 - 🟢 Home Team Win
 - 🟡 Draw
 - 🔴 Away Team Win
